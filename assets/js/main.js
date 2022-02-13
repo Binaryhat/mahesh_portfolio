@@ -11,7 +11,110 @@
 		$wrapper = $('#wrapper'),
 		$header = $('#header'),
 		$banner = $('#banner');
+		$portfolio_container = $('#one');
 
+		//portfolio object
+		var portfolioJson = [
+			{
+				"id":"1",
+				"name":"Music Player",
+				"desc":"Music Player",
+				"img":"images/pic01.jpg",
+				"link":"./music-player/index.html"
+			},
+			{
+				"id":"2",
+				"name":"Video Player",
+				"desc":"player with Standard controls",
+				"img":"images/pic02.jpg",
+				"link":"./video-player/index.html"
+			},
+			{
+				"id":"3",
+				"name":"Joke Teller",
+				"desc":"Text to audio joke teller",
+				"img":"images/pic03.jpg",
+				"link":"./joke-teller/index.html"
+			},
+			{
+				"id":"4",
+				"name":"Infinite Scroll",
+				"desc":"Unsplash API - Infinite Scroll",
+				"img":"images/pic04.jpg",
+				"link":"./infinite-scroll/index.html"
+			},
+			{
+				"id":"5",
+				"name":"Picture in Picture",
+				"desc":"Picture in Picture window",
+				"img":"images/pic05.jpg",
+				"link":"./picture-in-picture/index.html"
+			},
+			{
+				"id":"6",
+				"name":"spock rock game",
+				"desc":"Rock-paper-scissors-lizard-Spock",
+				"img":"images/pic06.jpg",
+				"link":"./spock-rock-game/index.html"
+			},
+			{
+				"id":"7",
+				"name":"Quote Generator",
+				"desc":"Quote Generator",
+				"img":"images/pic07.jpg",
+				"link":"./quote_generator/index.html"
+			},
+			{
+				"id":"8",
+				"name":"Theme Modes",
+				"desc":"light-dark-mode theme toggle",
+				"img":"images/pic08.jpg",
+				"link":"./light-dark-mode/index.html"
+			},
+			{
+				"id":"9",
+				"name":"Kanban Board",
+				"desc":"Drag and Drop fuctionality",
+				"img":"images/pic09.jpg",
+				"link":"./drag-and-drop/index.html"
+			},
+			{
+				"id":"10",
+				"name":"Custom Countdown",
+				"desc":"light-dark-mode theme toggle",
+				"img":"images/pic10.jpg",
+				"link":"./custom-countdown/index.html"
+			},
+			{
+				"id":"11",
+				"name":"Book Keeper",
+				"desc":"Bookmark system for wen urls",
+				"img":"images/pic11.jpg",
+				"link":"./book-keeper/index.html"
+			},
+			{
+				"id":"12",
+				"name":"Animated Template",
+				"desc":"AOS - Animate on scroll library",
+				"img":"images/pic12.jpg",
+				"link":"./animated-template/index.html"
+			},
+			{
+				"id":"13",
+				"name":"Animated navigation",
+				"desc":"Animated menu and navigaton",
+				"img":"images/pic13.jpg",
+				"link":"./animated-navigation/index.html"
+			},
+			{
+				"id":"14",
+				"name":"Form Validator",
+				"desc":"Form validations",
+				"img":"images/pic14.jpg",
+				"link":"./form-validator/index.html"
+			},
+			
+		];
 	// Breakpoints.
 		breakpoints({
 			xlarge:    ['1281px',   '1680px'   ],
@@ -98,6 +201,24 @@
 			}, 100);
 		});
 
+		//portfolio dynamic 
+		function loadPortfolio(){
+
+			$.each(portfolioJson, function(idx, obj) {
+				$portfolio_container.append(`
+				<article>
+					<span class="image">
+						<img src="${obj.img}" alt="" />
+					</span>
+					<header class="major">
+						<h3><a href="${obj.link}" class="link">${obj.name}</a></h3>
+						<p>${obj.desc}</p>
+					</header>
+				</article>
+			`);
+			});
+
+		}
 	// Clear transitioning state on unload/hide.
 		$window.on('unload pagehide', function() {
 			window.setTimeout(function() {
@@ -115,6 +236,9 @@
 				return $header.height() - 2;
 			}
 		});
+
+		//to load portfolio
+		loadPortfolio();
 
 	// Tiles.
 		var $tiles = $('.tiles > article');
